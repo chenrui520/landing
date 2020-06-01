@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROCKFORT</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        line-height: 0;
+    }
+
+    img {
+        width: 100%;
+    }
+
+    #login {
+        position: absolute;
+        width: 30vw;
+        height: 20vw;
+        background: url(Bg.png) no-repeat;
+        background-size: cover;
+        overflow: hidden;
+        border-radius: 10px;
+        top: 13vw;
+        right: 8vw;
+        background-position-y: center;
+    }
+
+    #iframe1 {
+        margin-right: 2vw;
+    }
+
+    #myCanvas {
+        border: 1px solid #d3d3d3;
+        position: absolute;
+        top: 50%;
+        left: 55%;
+        transform: translateY(-50%);
+    }
+
+    #mobilemyCanvas {
+        border: 1px solid #d3d3d3;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-50%);
+    }
+
+    #login div {
+        position: relative;
+    }
+
+    #login .email,
+    #login .Yzm {
+        width: 22vw;
+        border: 1px solid #fff;
+        border-radius: 30px;
+        padding: 0px 1vw;
+        position: absolute;
+        left: 3vw;
+        top: 4vw;
+        height: 4vw;
+        line-height: 2vw;
+    }
+
+    #login .Yzm {
+        top: 11vw;
+    }
+
+    #login .email input,
+    #login .Yzm input {
+        width: 18vw;
+        font-size: 1vw;
+        color: #fff;
+        border: 0;
+        outline: none;
+        background: none;
+    }
+
+    ::-webkit-input-placeholder {
+        color: #fff;
+    }
+
+    #login span {
+        position: absolute;
+        font-size: 1vw;
+        color: #fff;
+        right: 5%;
+        top: 50%;
+        ;
+    }
+
+    #login button {
+        outline: none;
+        font-size: 14px;
+        text-align: center;
+        width: 25%;
+        height: 2vw;
+        line-height: 2vw;
+        border-radius: 2vw;
+        background: #fff;
+        color: #ff9c05;
+        border: 0;
+        cursor: pointer;
+        position: absolute;
+        bottom: 1.6vw;
+        left: 36%;
+    }
+
+    #dialog {
+        background: url('dialog.png') no-repeat;
+        width: 19vw;
+        height: 26vw;
+        background-size: contain;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 13vw;
+        display: none;
+    }
+
+    #dialog h3 {
+        font-size: 24px;
+        color: #ff9c05;
+        text-align: center;
+        margin-top: 12vw;
+        line-height: 1em;
+    }
+
+    #dialog .iphone {
+        width: 80%;
+        margin: 0 auto;
+        border-bottom: 1px solid #000;
+        margin-top: 2vw;
+        position: relative;
+    }
+
+    #dialog input {
+        outline: none;
+        width: 70%;
+        text-align: center;
+        background: none;
+        font-size: 14px;
+        border: 0;
+    }
+
+    #dialog .iphone span {
+        font-size: 1vw;
+        line-height: 1em;
+    }
+
+    #dialog button {
+        border: 0;
+        background: #ff9c05;
+        color: #fff;
+        height: 2.5vw;
+        line-height: 2.5vw;
+        text-align: center;
+        width: 50%;
+        border-radius: 3vw;
+        font-size: 22px;
+        cursor: pointer;
+        margin: 0 auto;
+        margin-top: 1.5vw;
+        display: block;
+    }
+
+    #dialog p {
+        text-align: center;
+        font-size: 14px;
+        line-height: 1em;
+        margin-top: 0.5vw;
+    }
+
+    .foot p {
+        text-align: left;
+        font-size: 1vw;
+        line-height: 2vw;
+        width: 63vw;
+        margin: 0 auto;
+        margin-bottom: 3vw;
+    }
+
+    #mobile img {
+        width: 100%;
+    }
+
+    .mobileFoot p {
+        width: 20rem;
+        text-align: left;
+        font-size: 12px;
+        line-height: 2em;
+        margin: 0 auto;
+        margin-bottom: 0.5rem;
+        -webkit-transform: scale(0.8);
+        -o-transform: scale(1);
+        display: inline-block;
+    }
+
+    #mobileiframe1 {
+        margin-bottom: 1rem;
+    }
+
+    #mobilelogin {
+        position: absolute;
+        width: 16.8rem;
+        height: 12.5rem;
+        overflow: hidden;
+        border-radius: 10px;
+        top: 18rem;
+        right: 0;
+        left: 0;
+        margin: auto;
+    }
+
+    #mobile .email,
+    #mobile .Yzm {
+        width: 15rem;
+        border: 1px solid #fff;
+        border-radius: 0.5rem;
+        padding: 0px 0.5rem;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 2rem;
+        height: 2.5rem;
+        margin: auto;
+        line-height: 2.5rem;
+    }
+
+    #mobile .Yzm {
+        top: 6rem;
+    }
+
+    #mobile .email input,
+    #mobile .Yzm input {
+        width: 15rem;
+        font-size: 1rem;
+        color: #fff;
+        border: 0;
+        outline: none;
+        background: none;
+        line-height: normal;
+    }
+
+    #mobile span {
+        position: absolute;
+        font-size: 1vw;
+        color: #fff;
+        right: 5%;
+        top: 50%;
+        ;
+    }
+
+    #mobile button {
+        outline: none;
+        font-size: 1rem;
+        text-align: center;
+        width: 8rem;
+        height: 2rem;
+        line-height: 2rem;
+        border-radius: 2vw;
+        background: #fff;
+        color: #ff9c05;
+        border: 0;
+        cursor: pointer;
+        position: absolute;
+        bottom: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    #mobiledialog {
+        background: url(mobilebtn.png) no-repeat;
+        width: 18rem;
+        height: 20rem;
+        background-size: cover;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 5rem;
+        z-index: 99;
+        display: none;
+    }
+
+    #mobiledialog h3 {
+        font-size: 1.1rem;
+        color: #ff9c05;
+        text-align: center;
+        margin-top: 10rem;
+        line-height: 1em;
+    }
+
+    #mobiledialog .iphone {
+        position: relative;
+        width: 12.5rem;
+        margin: 0 auto;
+        border-bottom: 1px solid #000;
+        margin-top: 1rem;
+    }
+
+    #mobiledialog input {
+        outline: none;
+        width: 70%;
+        text-align: center;
+        background: none;
+        font-size: 0.8rem;
+        border: 0;
+        height: 1rem;
+    }
+
+    #mobiledialog .iphone span {
+        font-size: 1rem;
+        float: right;
+        color: #000;
+    }
+
+    #mobiledialog button {
+        border: 0;
+        background: #ff9c05;
+        color: #fff;
+        height: 2rem;
+        line-height: 2rem;
+        text-align: center;
+        width: 50%;
+        border-radius: 3vw;
+        font-size: 1.1rem;
+        cursor: pointer;
+        margin: 0 auto;
+        margin-top: 0rem;
+        display: block;
+        bottom: 2.5rem;
+    }
+
+    #mobiledialog p {
+        text-align: center;
+        font-size: 14px;
+        line-height: 1em;
+        margin-top: 0.5vw;
+    }
+    #btn {
+            width: 2.5rem;
+            height: auto;
+            position: absolute;
+            right: 0.5rem;
+            top: 0.3rem;
+        }
+    @media screen and (max-width: 500px) {
+        #btn {
+            width: 5rem;
+            height: auto;
+            position: absolute;
+            right: 1rem;
+            top: 0.5rem;
+        }
+    }
+
+    #mask {
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: none;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 10;
+    }
+</style>
+
+<body>
+    <a href="http://www.rockfortpro.com">
+        <img src="btn.png" alt="bt" id="btn">
+    </a>
+    <div id="pc">
+        <div id="dialog">
+            <h3>提交成功</h3>
+            <div class="iphone">
+                <input id="iphone" type="text">
+                <span>(选填)</span>
+            </div>
+            <p>填写手机号方便我们第一时间联系您</p>
+            <button onclick="emailIphone()">确认</button>
+        </div>
+        <div id="login">
+            <div class="email">
+                <input type="email" id="email" placeholder="邮箱">
+            </div>
+            <div class="Yzm">
+                <input type="text" id="Ycode" placeholder="验证码">
+                <canvas id="myCanvas" width="65%" height="27px"></canvas>
+                <span onclick="createCode()">换一张</span>
+            </div>
+            <button onclick="emailSubmit()">提交信息</button>
+        </div>
+        <img src="1.png" alt="">
+        <img src="2.png" alt="">
+
+        <div style="background: #eaeef2;padding: 5vw;text-align: center;">
+            <iframe id="iframe1" frameborder="0" width="30vw" height="25vw" scrolling="yes"
+                src="https://www.jin10.com/example/jin10.com.html?fontSize=14px&theme=white"></iframe>
+            <iframe id="iframe2" frameborder="0" width="30vw" height="25vw" scrolling="yes"
+                src="https://rili-d.jin10.com/open.php?fontSize=14px&theme=primary"></iframe>
+
+        </div>
+        <img src="3.jpg" alt="">
+        <div class="foot" style="background: #eaeef2;padding: 5vw 0 1px 1px;text-align: center;">
+            <p>风险提示：外汇保证金，差价合约及衍生工具属高风险投资，均伴有巨大的风险，高杠杆的使用可能令您获得更高收益的同时，也放大了仓位波动的不利影响，并不一定适用于所有投资者。因此投资者决定进行保证金投资前，请务必慎重考虑您的投资目标，经验程度，和对风险的承受能力。
+            </p>
+            <p>友情提示：Rockfort公司不会以任何名义(理财，操盘等)获取客户任何的交易密码。Rockfort公司不会以任何名义代替客户出入金，所有出入金请求是在客户本人自愿情况下进行。客户需保护自己交易账户密码的安全，不对任何第三方泄露交易账号及密码，如若泄露或者与除Rockfort以外的第三方有其他形式合作，客户需自己承担可能产生的风险，Rockfort公司无关。
+            </p>
+            <p>免责声明：使用互联网交易执行系统会存在相关风险，其中包括但不限硬件，软件以及互联网的连接故障。由于Rockfort无法控制个人网络信号强度，通过互联网进行的信号接收或路由，以及您的设备配置或其连接的可靠性，因此我们不能对您通过互联网进行交易时可能遇到的通信故障，失真或延迟负责。Rockfort采用的备份系统和应急计划将系统发生故障的可能性降至最低，但无法完全排除大环境网络因国家，地区以及移动端和个人网络的运营商而产生的差异。
+            </p>
+        </div>
+    </div>
+    <div id="mobile">
+        <div id="mobiledialog">
+            <h3>提交成功</h3>
+            <div class="iphone">
+                <input id="mobileiphone" type="text">
+                <span>(选填)</span>
+            </div>
+            <p>填写手机号方便我们第一时间联系您</p>
+            <button onclick="emailIphone('mobile')">确认</button>
+        </div>
+        <div id="mask"></div>
+        <div id="mobilelogin">
+            <div class="email">
+                <input type="email" id="mobileemail" placeholder="邮箱">
+            </div>
+            <div class="Yzm">
+                <input type="text" id="mobileYcode" placeholder="验证码">
+                <canvas id="mobilemyCanvas" width="65%" height="27px"></canvas>
+                <span onclick="createCode()">换一张</span>
+            </div>
+            <button onclick="emailSubmit('mobile')">提交信息</button>
+        </div>
+        <img src="mobile1.png" alt="bg">
+        <img src="mobile2.jpg" alt="bg">
+        <div style="background: #eaeef2;padding: 1rem 0;text-align: center;">
+            <iframe id="mobileiframe1" frameborder="0" width="30vw" height="25vw" scrolling="yes"
+                src="https://www.jin10.com/example/jin10.com.html?fontSize=14px&theme=white"></iframe>
+            <iframe id="mobileiframe2" frameborder="0" width="30vw" height="25vw" scrolling="yes"
+                src="https://rili-d.jin10.com/open.php?fontSize=14px&theme=primary"></iframe>
+
+        </div>
+        <img src="mobile3.jpg" alt="bg">
+        <div class="mobileFoot" style="background: #eaeef2;padding: 1rem 0 1px 1px;text-align: center;">
+            <p>风险提示：外汇保证金，差价合约及衍生工具属高风险投资，均伴有巨大的风险，高杠杆的使用可能令您获得更高收益的同时，也放大了仓位波动的不利影响，并不一定适用于所有投资者。因此投资者决定进行保证金投资前，请务必慎重考虑您的投资目标，经验程度，和对风险的承受能力。
+            </p>
+            <p>友情提示：Rockfort公司不会以任何名义(理财，操盘等)获取客户任何的交易密码。Rockfort公司不会以任何名义代替客户出入金，所有出入金请求是在客户本人自愿情况下进行。客户需保护自己交易账户密码的安全，不对任何第三方泄露交易账号及密码，如若泄露或者与除Rockfort以外的第三方有其他形式合作，客户需自己承担可能产生的风险，Rockfort公司无关。
+            </p>
+            <p>免责声明：使用互联网交易执行系统会存在相关风险，其中包括但不限硬件，软件以及互联网的连接故障。由于Rockfort无法控制个人网络信号强度，通过互联网进行的信号接收或路由，以及您的设备配置或其连接的可靠性，因此我们不能对您通过互联网进行交易时可能遇到的通信故障，失真或延迟负责。Rockfort采用的备份系统和应急计划将系统发生故障的可能性降至最低，但无法完全排除大环境网络因国家，地区以及移动端和个人网络的运营商而产生的差异。
+            </p>
+        </div>
+    </div>
+
+</body>
+<script src="jquery-3.4.1.min.js"></script>
+<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script>
+    (function (doc, win, undefined) {
+        var docEl = doc.documentElement,
+            resizeEvt = 'orientationchange' in win ? 'orientationchange' : 'resize',
+            recalc = function () {
+                var clientWidth = docEl.clientWidth;
+                if (clientWidth > 500) {
+                    $('#mobile').hide()
+                    $('#pc').show()
+                } else {
+                    $('#mobile').show()
+                    $('#pc').hide()
+
+                }
+                if (clientWidth === undefined) return;
+                docEl.style.fontSize = (clientWidth / 20) + 'px';
+
+            };
+        if (doc.addEventListener === undefined) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false)
+
+    })(document, window);
+
+    var Ycode = ''
+    var width = $(window).width() / 100
+    $('#iframe1,#iframe2').width(width * 30).height(width * 25)
+    $('#mobileiframe1,#mobileiframe2').width(width * 90).height(width * 90)
+
+    createCode()
+    var ip = returnCitySN["cip"]
+    function createCode() {
+        code = "";
+        var codeLength = 4;//验证码的长度，可变
+        var canvas = document.getElementById('myCanvas');//获取画布
+        var mobileCanvas = document.getElementById('mobilemyCanvas');//获取画布 
+        var selectChar = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');//所有候选组成验证码的字符
+
+        for (var i = 0; i < codeLength; i++) {
+            var charIndex = Math.floor(Math.random() * 36);
+            code += selectChar[charIndex];
+        }
+        if (canvas) {
+            var ctx = canvas.getContext('2d');
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillRect(0, 0, 70, 27);
+            ctx.font = "20px arial";
+            // 创建渐变
+            var gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
+            gradient.addColorStop("0", "magenta");
+            gradient.addColorStop("0.5", "blue");
+            gradient.addColorStop("1.0", "red");
+            // 用渐变填色
+            ctx.strokeStyle = gradient;
+            ctx.strokeText(code, 5, 20);//画布上添加验证码
+        }
+        if (mobileCanvas) {
+            var mobilectx = mobileCanvas.getContext('2d');
+            mobilectx.fillStyle = '#FFFFFF';
+            mobilectx.fillRect(0, 0, 70, 27);
+            mobilectx.font = "20px arial";
+            // 创建渐变
+            var gradient = mobilectx.createLinearGradient(0, 0, mobileCanvas.width, 0);
+            gradient.addColorStop("0", "magenta");
+            gradient.addColorStop("0.5", "blue");
+            gradient.addColorStop("1.0", "red");
+            // 用渐变填色
+            mobilectx.strokeStyle = gradient;
+            mobilectx.strokeText(code, 5, 20);//画布上添加验证码
+        }
+        Ycode = code
+        console.log(Ycode)
+    }
+
+    function emailSubmit(str) {
+        if (check(str)) {
+            if (str === 'mobile') {
+                if ($('#mobileYcode').val() == Ycode) {
+                    $.ajax({
+                        type: "POST",
+                        url: 'http://47.57.153.155:2045/api/information/information',
+                        data: JSON.stringify({
+                            email: $('#mobileemail').val(),
+                            channel: getQueryVariable('channel'),
+                            mobile: "1",
+                            ip: ip
+                        }),
+                        dataType: 'JSON',
+                        contentType: "application/json",
+                        success: function (data) {
+                            console.log(data)
+                            $('#mask').show()
+                            $('#mobiledialog').css('display', 'block')
+                        }
+                    });
+                } else {
+                    alert('验证码错误，注意区分大小写')
+                }
+            } else {
+                if ($('#Ycode').val() == Ycode) {
+                    $.ajax({
+                        type: "POST",
+                        url: 'http://47.57.153.155:2045/api/information/information',
+                        data: JSON.stringify({
+                            email: $('#email').val(),
+                            channel: getQueryVariable('channel'),
+                            mobile: "1",
+                            ip: ip
+                        }),
+                        dataType: 'JSON',
+                        contentType: "application/json",
+                        success: function (data) {
+                            console.log(data)
+                            $('#dialog').css('display', 'block')
+                        }
+                    });
+                } else {
+                    alert('验证码错误，注意区分大小写')
+                }
+            }
+
+        }
+
+
+    }
+    function check(str) {
+        var reg = /^\w+((.\w+)|(-\w+))@[A-Za-z0-9]+((.|-)[A-Za-z0-9]+).[A-Za-z0-9]+$/; //正则表达式
+        var obj = {}
+        if (str === 'mobile') {
+            obj = document.getElementById('mobileemail')
+        } else {
+            obj = document.getElementById("email"); //要验证的对象
+        }
+        if (obj.value === "") { //输入不能为空
+            alert("邮箱输入不能为空!");
+            return false;
+        } else if (!reg.test(obj.value)) { //正则验证不通过，格式不对
+            alert("邮箱验证不通过!");
+            return false;
+        } else {
+            return true;
+        }
+    }
+    function emailIphone(str) {
+        if (str === 'mobile') {
+            $.ajax({
+                type: "POST",
+                url: 'http://47.57.153.155:2045/api/information/mobile',
+                data: {
+                    email: $('#mobileemail').val(),
+                    mobile: $('#mobileiphone').val()
+                },
+                dataType: 'JSON',
+                // contentType: "application/json",
+                success: function (data) {
+                    $('#mobiledialog').css('display', 'none')
+                    $('#mask').hide()
+                    alert('提交成功')
+                }
+            });
+        } else {
+            $.ajax({
+                type: "POST",
+                url: 'http://47.57.153.155:2045/api/information/mobile',
+                data: {
+                    email: $('#email').val(),
+                    mobile: $('#iphone').val()
+                },
+                dataType: 'JSON',
+                // contentType: "application/json",
+                success: function (data) {
+                    $('#dialog').css('display', 'none')
+                    alert('提交成功')
+                }
+            });
+        }
+
+
+
+    }
+    function getQueryVariable(variable) {
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i = 0; i < vars.length; i++) {
+            var pair = vars[i].split("=");
+            if (pair[0] == variable) { return pair[1]; }
+        }
+        return (false);
+    }
+    console.log(getQueryVariable('channel'))
+</script>
+
+</html>

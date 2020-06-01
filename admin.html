@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROCKFORT</title>
+</head>
+<style>
+    * {
+        line-height: 2.5em;
+    }
+</style>
+
+<body>
+    <div>
+        <table id="div" border="1" style="width: 100%;">
+
+
+        </table>
+    </div>
+</body>
+<script src="jquery-3.4.1.min.js"></script>
+<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script>
+    var width = $(window).width() / 100
+    $('html').css('font-size', width)
+    $.get('http://47.57.153.155:2045/api/information', function (data) {
+        var str = `<tr>
+                <th> 邮箱</th>
+                <th>手机号</th>
+                <th>来源</th>
+                <th>ip</th>
+                <th>时间</th>
+            </tr >`
+        data.forEach(element => {
+            str += `<tr>
+        <td>${element.email}</td>
+        <td>${element.mobile}</td>
+        <td>${element.channel}</td>
+        <td>${element.ip}</td>
+        <td>${element.updatedDate}</td>
+    </tr>`
+        });
+        $('#div').html(str)
+    })
+
+</script>
+
+</html>
